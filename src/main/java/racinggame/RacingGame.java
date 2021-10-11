@@ -3,11 +3,12 @@ package racinggame;
 import java.util.List;
 
 public class RacingGame {
-	public static void start(String attendNames, int turnCount) {
+	public static String start(String attendNames, int turnCount) {
 		CarGroup racingGroup = CarUtils.createCar(attendNames);
 		for (int i = 0; i < turnCount; i++) {
 			racingGroup.startTurn();
 		}
+		return racingGroup.winner();
 	}
 
 	public static void printResult(List<Car> cars) {
