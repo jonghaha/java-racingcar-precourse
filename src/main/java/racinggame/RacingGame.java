@@ -14,7 +14,7 @@ public class RacingGame {
 	public static void printResult(List<Car> cars) {
 		System.out.println("실행 결과");
 		for (Car car : cars) {
-			System.out.print(car.getName() + ":");
+			System.out.print(car.getName() + " : ");
 			printPosition(car.getPosition());
 		}
 	}

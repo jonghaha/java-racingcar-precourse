@@ -10,7 +10,7 @@ public class Application {
             System.out.println("시도할 회수는 몇회인가요?");
             int turnCount = Integer.parseInt(Console.readLine());
             String winner = RacingGame.start(attendNames, turnCount);
-            System.out.println("최종 우승자는 " + winner + "입니다.");
+            System.out.println("최종 우승자는 " + winner + " 입니다.");
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
