@@ -12,4 +12,10 @@ public class CarGroup {
 	public List<Car> getCars() {
 		return cars;
 	}
+
+	public void startTurn() {
+		for (Car car : cars) {
+			car.move(CarUtils.getNumber());
+		}
+	}
 }
