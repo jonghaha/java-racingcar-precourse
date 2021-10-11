@@ -17,5 +17,6 @@ public class CarGroup {
 		for (Car car : cars) {
 			car.move(CarUtils.getNumber());
 		}
+		RacingGame.printResult(cars);
 	}
 }
