@@ -7,8 +7,8 @@ import nextstep.utils.Console;
 
 public class RacingGame {
 	public void start() {
-		CarGroup racingGroup = null;
-		int turnCount = 0;
+		CarGroup racingGroup;
+		int turnCount;
 
 		try {
 			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
