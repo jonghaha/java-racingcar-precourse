@@ -1,5 +1,7 @@
 package racinggame;
 
+import java.util.NoSuchElementException;
+
 public class Car {
 	private final String name;
 	private int position;
@@ -19,8 +21,8 @@ public class Car {
 	}
 
 	private void vaildateCarName(String name) {
-		if (name.length() > 5) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자이하만 가능합니다.");
+		if (name.length() > 5 || name.length() == 0) {
+			throw new NoSuchElementException("[ERROR] 자동차 이름은 5자이하만 가능합니다.");
 		}
 	}
 

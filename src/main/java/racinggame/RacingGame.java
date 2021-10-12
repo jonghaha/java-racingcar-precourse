@@ -1,14 +1,32 @@
 package racinggame;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import nextstep.utils.Console;
 
 public class RacingGame {
-	public static String start(String attendNames, int turnCount) {
-		CarGroup racingGroup = CarUtils.createCar(attendNames);
-		for (int i = 0; i < turnCount; i++) {
-			racingGroup.startTurn();
+	public void start() {
+		CarGroup racingGroup = null;
+		int turnCount = 0;
+
+		try {
+			System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			String attendNames = Console.readLine();
+			racingGroup = CarUtils.createCar(attendNames);
+			System.out.println("시도할 회수는 몇회인가요?");
+			turnCount = Integer.parseInt(Console.readLine());
+		} catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+			throw new NoSuchElementException();
 		}
-		return racingGroup.winner();
+
+		try {
+			processGame(racingGroup, turnCount);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public static void printResult(List<Car> cars) {
@@ -24,5 +42,19 @@ public class RacingGame {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+
+	private void processGame(CarGroup racingGroup, int turnCount) {
+		if (turnCount < 1) {
+			throw new IllegalArgumentException("[ERROR] 시도할 횟수는 1이상 입력해주세요.");
+		}
+		for (int i = 0; i < turnCount; i++) {
+			racingGroup.startTurn();
+		}
+		printWinner(racingGroup.winner());
+	}
+
+	private void printWinner(String winner) {
+		System.out.println("최종 우승자는 " + winner + " 입니다.");
 	}
 }
